@@ -106,10 +106,12 @@ def worker(work):
     return support_values
 
 cores = 11   # number of cores
-bootstrap_dir = 'euth70_spades_genetree_bootreps'
+bootstrap_dir = 'euth70_spades_genetree_bootreps' # directory containing 1 file for each locus with filename the same as the locus name
+# with no extension.  each file should contain bootstrap replicate trees in newick format.
 
-# make sure taxon name space is not in a weird order
-examl = dendropy.Tree.get_from_path('examl','newick', rooting="force-unrooted")
+# make sure the same taxon name space with all taxa is used
+# you can use an ml tree with all taxa in newick format
+examl = dendropy.Tree.get_from_path('examl','newick')
 tns = examl.taxon_namespace
 
 print("Reading gene trees ...")
@@ -187,7 +189,7 @@ print("Scandentia, Primates, Dermoptera, Glires, Primatomorpha, Perissodactyla, 
 # print("Atlantogenata, Epitheria, Exafroplacentalia, TS1, TS2, TS3, TS4, LT1, LT2, LT3, LT4, LT5, LT6, LT7, LT8")
 
 # list multiple constraints
-
+# constraints are separated by commas, 
 multiple_constraints = [[Afrotheria, Xenarthra, Afrotheria + Xenarthra],
     [Afrotheria, Boreoeutheria, Afrotheria + Boreoeutheria],
     [Xenarthra, Boreoeutheria, Xenarthra + Boreoeutheria],	
