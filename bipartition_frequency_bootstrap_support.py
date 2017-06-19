@@ -116,9 +116,11 @@ tns = examl.taxon_namespace
 
 print("Reading gene trees ...")
 # read gene trees with appropriate taxon name space and unrooted
+# trees need to be named with their locus name
 trees=dendropy.TreeList.get_from_path('euth70.spades.best.nexus.tre','nexus', taxon_namespace=tns, rooting="force-unrooted")
 
 # set clade names
+# if you have underscores in the taxon names in your files, these need to be replaced with spaces in this python script
 
 Xenarthra = ['bradypus variegatus 55206', 'choloepus hoffmanni', 'dasypus novemcinctus', 'tamandua tetradactyla 55944']
 
