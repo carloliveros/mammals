@@ -40,7 +40,6 @@ for line in site_like_file:
 		# retrieve number of trees and sites from first line
 		numtrees = int(split_line[0])
 		numsites = int(split_line[1])
-		first_line = False
 		line_num = line_num + 1
 	else:
 		# check number of likelihood scores is correct
@@ -71,7 +70,7 @@ for i in range(2, numtrees + 1):
 	SL_differences = []
 	for ch in charset_list:
 		locus_diff = 0
-		for site in (ch.start, ch.end):
+		for site in range(ch.start, ch.end + 1):
 			site_diff =  float(site_like_scores[0][site]) - float(site_like_scores[i-1][site])
 			SL_differences.append(str(site_diff))
 			locus_diff = site_diff + locus_diff
